@@ -32,11 +32,15 @@ export function QuizConfig({ settings, onChange, onStart, onReset }: Props) {
       <p className="muted">Latin American conjugation trainer with present, preterite, and imperfect drills.</p>
 
       <h2>Tenses</h2>
+      <p className="muted" style={{ fontSize: "0.875rem", marginTop: "-0.5rem", marginBottom: "1rem" }}>
+        <strong>Preterite:</strong> Completed actions in the past (e.g., "I went").<br />
+        <strong>Imperfect:</strong> Ongoing or repeated past actions (e.g., "I used to go").
+      </p>
       <div className="toggle-grid">
         {tenseOrder.map((tense) => (
           <label key={tense} className="toggle">
             <input type="checkbox" checked={settings.enabledTenses.includes(tense)} onChange={() => toggleTense(tense)} />
-            <span>{tense}</span>
+            <span style={{ textTransform: "capitalize" }}>{tense}</span>
           </label>
         ))}
       </div>
@@ -51,20 +55,6 @@ export function QuizConfig({ settings, onChange, onStart, onReset }: Props) {
         ))}
       </div>
 
-      <label className="toggle">
-        <input
-          type="checkbox"
-          checked={settings.includeVos}
-          onChange={() => {
-            const includeVos = !settings.includeVos;
-            const enabledPersons: Person[] = includeVos
-              ? Array.from(new Set([...settings.enabledPersons, "vos"]))
-              : settings.enabledPersons.filter((p) => p !== "vos");
-            onChange({ ...settings, includeVos, enabledPersons });
-          }}
-        />
-        <span>Include vos</span>
-      </label>
 
       <label className="stack">
         Questions per session
