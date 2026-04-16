@@ -1,4 +1,5 @@
 import rawVerbs from "../data/verbs-top-300.json";
+import { VERB_DEFINITIONS } from "../data/verbDefinitions";
 import type { Person, Tense, VerbEntry, VerbGroup, StemChangeType } from "../types/conjugation";
 import { IRREGULAR_TENSE_VERBS, REGULAR_ENDINGS } from "./rules";
 
@@ -67,6 +68,7 @@ export function getVerbList(limit = 300): VerbEntry[] {
   const verbs = rawVerbs.verbs.slice(0, limit);
   return verbs.map((infinitive) => ({
     infinitive,
+    definition: VERB_DEFINITIONS[infinitive] ?? "to do/to be",
     group: inferVerbGroup(infinitive),
     stemChange: STEM_CHANGE_VERBS[removeReflexive(infinitive)]
   }));

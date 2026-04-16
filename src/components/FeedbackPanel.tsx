@@ -7,14 +7,19 @@ interface Props {
 
 export function FeedbackPanel({ feedback, onContinue }: Props) {
   if (!feedback) return null;
+  const title = feedback.status === "correct" ? "Correct" : feedback.status === "close" ? "Close" : "Incorrect";
+
   return (
     <section className={`card feedback-${feedback.status}`}>
-      <h2>{feedback.status === "correct" ? "Correct" : feedback.status === "close" ? "Close" : "Incorrect"}</h2>
-      <p>
+      <div className="feedback-header">
+        <span className={`feedback-badge feedback-badge-${feedback.status}`}>{title}</span>
+        <h2 className="feedback-title">{title}</h2>
+      </div>
+      <p className="feedback-answer">
         Correct answer: <strong>{feedback.canonicalAnswer}</strong>
       </p>
       {feedback.hints.length > 0 && (
-        <ul>
+        <ul className="feedback-hints">
           {feedback.hints.map((hint) => (
             <li key={hint}>{hint}</li>
           ))}

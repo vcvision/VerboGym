@@ -5,12 +5,13 @@ interface Props {
   settings: QuizSettings;
   onChange: (next: QuizSettings) => void;
   onStart: () => void;
+  onReset: () => void;
 }
 
 const personOrder: Person[] = ["yo", "tu", "el_ella_usted", "nosotros", "ellos_ellas_ustedes", "vos"];
 const tenseOrder: Tense[] = ["present", "preterite", "imperfect"];
 
-export function QuizConfig({ settings, onChange, onStart }: Props) {
+export function QuizConfig({ settings, onChange, onStart, onReset }: Props) {
   const toggleTense = (tense: Tense) => {
     const enabled = settings.enabledTenses.includes(tense);
     const next = enabled ? settings.enabledTenses.filter((t) => t !== tense) : [...settings.enabledTenses, tense];
@@ -76,9 +77,14 @@ export function QuizConfig({ settings, onChange, onStart }: Props) {
         />
       </label>
 
-      <button onClick={onStart} disabled={!canStart}>
-        Start quiz
-      </button>
+      <div className="action-row">
+        <button type="button" className="secondary-button" onClick={onReset}>
+          Reset to defaults
+        </button>
+        <button onClick={onStart} disabled={!canStart}>
+          Start quiz
+        </button>
+      </div>
     </section>
   );
 }

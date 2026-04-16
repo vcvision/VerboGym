@@ -19,6 +19,7 @@ export type StemChangeType = "e_ie" | "o_ue" | "e_i" | "u_ue";
 
 export interface VerbEntry {
   infinitive: string;
+  definition: string;
   group: VerbGroup;
   stemChange?: StemChangeType;
   irregular?: ConjugationMap;

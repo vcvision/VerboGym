@@ -7,19 +7,19 @@ describe("conjugator", () => {
   });
 
   it("conjugates regular present verbs", () => {
-    const hablar = { infinitive: "hablar", group: "ar" as const };
+    const hablar = { infinitive: "hablar", definition: "to speak", group: "ar" as const };
     expect(conjugate(hablar, "present", "yo")).toBe("hablo");
     expect(conjugate(hablar, "present", "nosotros")).toBe("hablamos");
   });
 
   it("conjugates irregular verbs", () => {
-    const ser = { infinitive: "ser", group: "er" as const };
+    const ser = { infinitive: "ser", definition: "to be", group: "er" as const };
     expect(conjugate(ser, "present", "yo")).toBe("soy");
     expect(conjugate(ser, "preterite", "ellos_ellas_ustedes")).toBe("fueron");
   });
 
   it("supports vos endings in latam mode", () => {
-    const comer = { infinitive: "comer", group: "er" as const };
+    const comer = { infinitive: "comer", definition: "to eat", group: "er" as const };
     expect(conjugate(comer, "present", "vos")).toBe("comés");
   });
 });
