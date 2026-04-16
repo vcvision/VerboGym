@@ -1,7 +1,8 @@
 import type { Person, Tense } from "../types/conjugation";
 
 function stripAccents(text: string): string {
-  return text.normalize("NFD").replace(/\p{M}/gu, "");
+  // Keep this regex broadly browser-compatible (including older mobile Safari).
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 export function levenshtein(a: string, b: string): number {

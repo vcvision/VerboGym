@@ -23,4 +23,3 @@ export function checkAnswer(userAnswer: string, canonicalAnswer: string, person:
     hints: buildHints(normalizedUser, normalizedCanonical, person, tense).slice(0, 2)
   };
 }
-
