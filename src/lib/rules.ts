@@ -1,4 +1,4 @@
-import type { Person, Tense } from "../types/conjugation";
+import type { Person, Tense, ConjugationMap } from "../types/conjugation";
 
 export const DEFAULT_PERSON_LABELS: Record<Person, string> = {
   yo: "yo",
@@ -35,7 +35,7 @@ export const REGULAR_ENDINGS: Record<Tense, Record<"ar" | "er" | "ir", Record<Pe
   }
 };
 
-export const IRREGULAR_TENSE_VERBS = {
+export const IRREGULAR_TENSE_VERBS: Record<string, ConjugationMap> = {
   ser: {
     present: { yo: "soy", tu: "eres", el_ella_usted: "es", nosotros: "somos", ellos_ellas_ustedes: "son", vos: "sos" },
     preterite: { yo: "fui", tu: "fuiste", el_ella_usted: "fue", nosotros: "fuimos", ellos_ellas_ustedes: "fueron", vos: "fuiste" },

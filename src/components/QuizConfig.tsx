@@ -56,7 +56,7 @@ export function QuizConfig({ settings, onChange, onStart }: Props) {
           checked={settings.includeVos}
           onChange={() => {
             const includeVos = !settings.includeVos;
-            const enabledPersons = includeVos
+            const enabledPersons: Person[] = includeVos
               ? Array.from(new Set([...settings.enabledPersons, "vos"]))
               : settings.enabledPersons.filter((p) => p !== "vos");
             onChange({ ...settings, includeVos, enabledPersons });
