@@ -56,16 +56,30 @@ export function QuizConfig({ settings, onChange, onStart, onReset }: Props) {
       </div>
 
 
-      <label className="stack">
-        Questions per session
-        <input
-          type="number"
-          min={5}
-          max={50}
-          value={settings.questionCount}
-          onChange={(event) => onChange({ ...settings, questionCount: Number(event.target.value) || 10 })}
-        />
-      </label>
+      <div className="stepper-group">
+        <span className="stepper-label">Questions per session</span>
+        <div className="stepper">
+          <button
+            type="button"
+            className="stepper-btn"
+            aria-label="Decrease question count"
+            disabled={settings.questionCount <= 5}
+            onClick={() => onChange({ ...settings, questionCount: Math.max(5, settings.questionCount - 5) })}
+          >
+            −
+          </button>
+          <span className="stepper-value">{settings.questionCount}</span>
+          <button
+            type="button"
+            className="stepper-btn"
+            aria-label="Increase question count"
+            disabled={settings.questionCount >= 50}
+            onClick={() => onChange({ ...settings, questionCount: Math.min(50, settings.questionCount + 5) })}
+          >
+            +
+          </button>
+        </div>
+      </div>
 
       <div className="action-row">
         <button type="button" className="secondary-button" onClick={onReset}>

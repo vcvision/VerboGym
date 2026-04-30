@@ -33,7 +33,7 @@ export function QuizPrompt({ question, questionIndex, totalQuestions, streak, on
       </div>
       <p className="prompt-infinitive">{question.verb.infinitive}</p>
       <div className="definition-chip" aria-label="verb-definition">
-        <span className="definition-chip-label">Meaning</span>
+        <span className="definition-chip-icon" aria-hidden="true">💡</span>
         <span className="definition-chip-text">{question.verb.definition}</span>
       </div>
       <div className="prompt-meta" aria-label="prompt-details">
@@ -65,7 +65,7 @@ export function QuizPrompt({ question, questionIndex, totalQuestions, streak, on
         <button type="submit">Submit</button>
       </form>
       <button type="button" className="link-button" onClick={onAbort}>
-        End session and return to start
+        END SESSION
       </button>
     </section>
   );

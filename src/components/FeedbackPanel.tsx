@@ -25,7 +25,7 @@ export function FeedbackPanel({ feedback, onContinue }: Props) {
           ))}
         </ul>
       )}
-      <button onClick={onContinue}>Next</button>
+      <button onClick={onContinue} autoFocus>Next</button>
     </section>
   );
 }
